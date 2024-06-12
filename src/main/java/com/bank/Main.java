@@ -15,12 +15,10 @@ public class Main {
         bank.transaction(account1, 50, "Withdraw");
 
         bank.displayAllTransactions();
-        
-        bank.transaction(account2, account3, 15000);
 
+        bank.transaction(account2, account3, 15000);
         System.out.println(account1);
         System.out.println(account2);
         System.out.println(account3);
-    
     }
 }
