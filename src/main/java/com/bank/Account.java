@@ -1,24 +1,31 @@
 package com.bank;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Account {
-    private int accountNumber;
+    private static final AtomicInteger accountIdCounter = new AtomicInteger(1);
+    private final int accountId;
     private double balance;
-    private String name;
+    private final String name;
     private boolean blocked;
 
-    public Account(int accountNumber, double balance, String name) {
-        this.accountNumber = accountNumber;
+    public Account( double balance, String name) {
+        this.accountId = generateAccountId();
         this.balance = balance;
         this.name = name;
         this.blocked = false;
     }
 
     public String toString() {
-        return "Account Number: " + accountNumber + ", Balance: " + balance + ", Name: " + name + ", Blocked: " + blocked;
+        return "Account Number: " + accountId + ", Balance: " + balance + ", Name: " + name + ", Blocked: " + blocked;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
+    private int generateAccountId() {
+        return accountIdCounter.getAndIncrement();
+    }
+
+    public int getAccountId() {
+        return accountId;
     }
     public double getBalance() {
         return balance;

@@ -10,7 +10,7 @@ public class BankTest {
     public void testAddAccount() {
         // Test adding an account to the bank
         Bank bank = new Bank();
-        Account account = new Account(1, 1000, "John Doe");
+        Account account = new Account(1000, "John Doe");
         bank.addAccount(account);
         assertNotNull(bank.getAccount(1));
     }
@@ -19,7 +19,7 @@ public class BankTest {
     public void testRemoveAccount() {
         // Test removing an account from the bank
         Bank bank = new Bank();
-        Account account = new Account(1, 1000, "Jane Smith");
+        Account account = new Account(1000, "Jane Smith");
         bank.addAccount(account);
         bank.removeAccount(account);
         assertNull(bank.getAccount(1));
@@ -29,7 +29,7 @@ public class BankTest {
     public void testBlockAccount() {
         // Test blocking an account in the bank
         Bank bank = new Bank();
-        Account account = new Account(1, 1000, "Alice");
+        Account account = new Account(1000, "Alice");
         bank.addAccount(account);
         bank.blockAccount(1);
         assertTrue(bank.isAccountBlocked(1));
@@ -39,7 +39,7 @@ public class BankTest {
     public void testUnblockAccount() {
         // Test unblocking a blocked account in the bank
         Bank bank = new Bank();
-        Account account = new Account(1, 1000, "Bob");
+        Account account = new Account(1000, "Bob");
         bank.addAccount(account);
         bank.blockAccount(1);
         bank.unblockAccount(1);

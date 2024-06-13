@@ -3,9 +3,9 @@ package com.bank;
 public class Main {
     public static void main(String[] args) {
         Bank bank = new Bank();
-        Account account1 = new Account(1, 1000, "John Wick");
-        Account account2 = new Account(2, 65000, "Tony Stark");
-        Account account3 = new Account(3, 4250, "Megan Fox");
+        Account account1 = new Account( 1000, "John Wick");
+        Account account2 = new Account( 65000, "Tony Stark");
+        Account account3 = new Account( 4250, "Megan Fox");
         bank.addAccount(account1);
         bank.addAccount(account2);
         bank.addAccount(account3);

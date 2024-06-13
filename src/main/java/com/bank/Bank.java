@@ -21,7 +21,7 @@ public class Bank {
     }
     public Account getAccount(int accountNumber) {
         for (Account account : this.accounts) {
-            if (account.getAccountNumber() == accountNumber) {
+            if (account.getAccountId() == accountNumber) {
                 return account;
             }
         }
