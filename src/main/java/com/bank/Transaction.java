@@ -1,10 +1,10 @@
 package com.bank;
 
 public class Transaction {
-    private Account sender;
-    private Account recipient;
-    private double amount;
-    private String type;
+    private final Account sender;
+    private final Account recipient;
+    private final double amount;
+    private final String type;
 
     // For transactions within the bank
     public Transaction(Account sender, Account recipient, double amount, String type) {
@@ -16,13 +16,9 @@ public class Transaction {
     // For withdraws and transactions outside the bank
     public Transaction(Account sender, double amount, String type) {
         this.sender = sender;
+        this.recipient = null;
         this.amount = amount;
         this.type = type;
-    }
-    // For deposits
-    public Transaction(double amount, Account recipient) {
-        this.recipient = recipient;
-        this.amount = amount;
     }
 
     public String toString() {

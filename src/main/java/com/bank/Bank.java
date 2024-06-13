@@ -3,8 +3,8 @@ package com.bank;
 import java.util.ArrayList;
 
 public class Bank {
-    private ArrayList<Account> accounts;
-    private ArrayList<Transaction> transactions;
+    private final ArrayList<Account> accounts;
+    private final ArrayList<Transaction> transactions;
 
     public Bank() {
         this.accounts = new ArrayList<>();
@@ -27,21 +27,17 @@ public class Bank {
         }
         return null;
     }
-    public Account blockAccount(int accountNumber) {
+    public void blockAccount(int accountNumber) {
         Account account = this.getAccount(accountNumber);
         if (account != null) {
             account.setBlocked(true);
-            return account;
         }
-        return null;
     }
-    public Account unblockAccount(int accountNumber) {
+    public void unblockAccount(int accountNumber) {
         Account account = this.getAccount(accountNumber);
         if (account != null) {
             account.setBlocked(false);
-            return account;
         }
-        return null;
     }
     public boolean isAccountBlocked(int accountNumber) {
         Account account = this.getAccount(accountNumber);

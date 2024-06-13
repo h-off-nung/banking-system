@@ -7,7 +7,7 @@ public class Main {
         Account account2 = new Account( 65000, "Tony Stark");
         Account account3 = new Account( 4250, "Megan Fox");
         bank.addAccount(account1);
-        bank.addAccount(account2);
+        bank.addAccount(account2); //
         bank.addAccount(account3);
 
         bank.transaction(account3, account1, 250);
