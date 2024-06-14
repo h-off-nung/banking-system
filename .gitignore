@@ -34,3 +34,8 @@ Thumbs.db
 
 # MySQL settings
 database.properties
+.classpath
+.project
+.settings/
+target/
+src/main/resources/
