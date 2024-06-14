@@ -31,3 +31,6 @@ Thumbs.db
 
 # Spring Boot
 *.pid
+
+# MySQL settings
+database.properties
