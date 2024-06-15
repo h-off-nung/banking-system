@@ -58,7 +58,7 @@ public class Bank {
             }
             sender.withdraw(amount);
             recipient.deposit(amount);
-            Transaction transaction = new Transaction(sender, recipient, amount, "Transfer");
+            Transaction transaction = new Transaction(sender.getAccountId(), recipient.getAccountId(), amount, "Transfer");
             this.transactions.add(transaction);
         }
     }
@@ -70,7 +70,7 @@ public class Bank {
                 return;
             }
             sender.withdraw(amount);
-            Transaction transaction = new Transaction(sender, amount, type);
+            Transaction transaction = new Transaction(sender.getAccountId(), amount, type);
             this.transactions.add(transaction);
         }
     }
@@ -80,7 +80,7 @@ public class Bank {
     public ArrayList<Transaction> getTransactions(Account account) {
         ArrayList<Transaction> accountTransactions = new ArrayList<>();
         for (Transaction transaction : this.transactions) {
-            if (transaction.getSender().equals(account) || transaction.getRecipient().equals(account)) {
+            if (transaction.getSenderId() == account.getAccountId()  || transaction.getRecipientId() == account.getAccountId()) {
                 accountTransactions.add(transaction);
             }
         }

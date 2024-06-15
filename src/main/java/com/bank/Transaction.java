@@ -1,43 +1,44 @@
 package com.bank;
 
 public class Transaction {
-    private final Account sender;
-    private final Account recipient;
+    private final int senderId;
+    private final int recipientId;
     private final double amount;
     private final String type;
 
     // For transactions within the bank
-    public Transaction(Account sender, Account recipient, double amount, String type) {
-        this.sender = sender;
-        this.recipient = recipient;
+    public Transaction(int sender, int recipient, double amount, String type) {
+        this.senderId = sender;
+        this.recipientId = recipient;
         this.amount = amount;
         this.type = type;
     }
     // For withdraws and transactions outside the bank
-    public Transaction(Account sender, double amount, String type) {
-        this.sender = sender;
-        this.recipient = null;
+    public Transaction(int sender, double amount, String type) {
+        this.senderId = sender;
+        this.recipientId = 0;
         this.amount = amount;
         this.type = type;
     }
 
-    public String toString() {
-        if (recipient != null) {
-            return "Sender: " + sender.getName() + ", Recipient: " + recipient.getName() + ", Amount: " + amount + ", Type: " + type;
-        }
-        return "Sender: " + sender.getName() + ", Amount: " + amount + ", Type: " + type;
-    }
+//    public String toString() {
+//        if (recipient != 0) {
+//            return "Sender: " + sender.getName() + ", Recipient: " + recipient.getName() + ", Amount: " + amount + ", Type: " + type;
+//        }
+//        return "Sender: " + sender.getName() + ", Amount: " + amount + ", Type: " + type;
+//    }
 
-    public Account getSender() {
-        return sender;
-    }
-    public Account getRecipient() {
-        return recipient;
-    }
     public double getAmount() {
         return amount;
     }
     public String getType() {
         return type;
+    }
+
+    public int getSenderId() {
+        return senderId;
+    }
+    public int getRecipientId() {
+        return recipientId;
     }
 }

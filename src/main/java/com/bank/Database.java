@@ -88,4 +88,56 @@ public class Database {
             exception.printStackTrace();
         }
     }
+
+    public void saveTransaction(Transaction transaction) {
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String sql = "INSERT INTO transactions (sender_id, recipient_id, amount, transaction_type) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, transaction.getSenderId());
+                stmt.setInt(2, transaction.getRecipientId());
+                stmt.setDouble(3, transaction.getAmount());
+                stmt.setString(4, transaction.getType());
+                stmt.executeUpdate();
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public Object[] getTransaction(int accountId) {
+        Object[] transactionData = null;
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String sql = "SELECT * FROM transactions WHERE sender_id = ? AND recipient_id = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, accountId);
+                stmt.setInt(2, accountId);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        int senderId = rs.getInt("sender_id");
+                        int recipientId = rs.getInt("recipient_id");
+                        double amount = rs.getDouble("amount");
+                        String type = rs.getString("transaction_type");
+                        transactionData = new Object[]{senderId, recipientId, amount, type};
+                    }
+                }
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return transactionData;
+    }
+
+    public void removeTransaction(Transaction transaction) {
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String sql = "DELETE FROM transactions WHERE sender_id = ? AND recipient_id = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, transaction.getSenderId());
+                stmt.setInt(2, transaction.getRecipientId());
+                stmt.executeUpdate();
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
 }

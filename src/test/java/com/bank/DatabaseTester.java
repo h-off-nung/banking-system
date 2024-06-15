@@ -9,5 +9,7 @@ public class DatabaseTester {
         DatabaseTest tester = new DatabaseTest();
         tester.testSaveAccount();
         tester.testRemoveAccount();
+        tester.testSaveTransaction();
+        System.out.println("Tests completed successfully");
     }
 }
