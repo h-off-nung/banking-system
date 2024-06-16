@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Database {
-    private String url;
-    private String user;
-    private String password;
+    private static String url;
+    private static String user;
+    private static String password;
 
     public Database() {
         try {
@@ -23,6 +23,10 @@ public class Database {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(url, user, password);
     }
 
     public void saveAccount(Account account) {
